@@ -1,0 +1,56 @@
+<h1>Projeto</h1>
+
+<ul class="tree">
+    <li>
+        <span folders>Backend</span>
+        <ul>
+            <li>
+                <span folders>app</span>
+                <ul>
+                    <li>produto.js</li>
+                    <li>usuario.js</li>
+                    <li>venda.js</li>
+                </ul>
+            </li>
+            <li>
+                <span folders>config</span>
+                <ul>
+                    <li>banco.js</li>
+                    <li>rotas.js</li>
+                    <li>servidor.js</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+
+
+    <li>
+        <span folders>Frontend</span>
+        <ul>
+            <li>
+                <span folders>public</span>
+                <ul>
+                    <li>app.css</li>
+                    <li>app.js</li>
+                    <li>index.html</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+</ul>
+
+<link rel="stylesheet" href="http://files.cod3r.com.br/curso-web/tree.css">
+
+<script>
+
+    document.querySelectorAll('[folders]').forEach(folder => {                  // Seleciona todos os elementos que estão marcados com 'folders' e cada um dos elementos. 
+        folder.onclick = function(event) {                                      // No evento onclick vai ser disparado o event fechar ou abrir elementos que estão abaixo.
+            
+            const ul = folder.nextElementSibling                                // Pegar o próximo elemento que está depois do folder.
+            const dsp = ul.style.display                                        // Display atual da pasta.
+            ul.style.display = dsp === 'none' ? 'block' : 'none'    
+
+        }
+    })
+
+</script>

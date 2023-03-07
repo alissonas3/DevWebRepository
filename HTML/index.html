@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>HTML Exercises Test</title>
+    
+    <style>
+        #conteudo {
+            padding: 30px 0px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>
+            HTML Exercises
+        </h1>
+    </header>
+
+    <nav>
+        <a href wm-link="exercicios/teste.html">00 - Test</a>
+        <a href wm-link="exercicios/texto1.html">01 - Text1</a>
+        <a href wm-link="exercicios/texto2.html">02 - Text2</a>
+        <a href wm-link="exercicios/listas.html">03 - Lists</a>
+        <a href wm-link="exercicios/listaAninhada.html">04 - Aninhada List</a>
+        <a href wm-link="exercicios/links.html">05 - Links</a>
+        <a href wm-link="exercicios/tabela.html">06 - Tabela</a>
+        <a href wm-link="exercicios/form/form.html">07 - Formulário</a>
+        <a href wm-link="exercicios/imagens.html">08 - Imagens</a>
+        <a href wm-link="exercicios/video.html">09 - Video</a>
+        <a href wm-link="exercicios/tagsNaoVisuais.html">10 - Tags NV</a>
+    </nav>
+
+    <section id="conteudo"></section>
+
+    <footer>
+        Web Moderno Course
+    </footer>
+
+    <script>
+        document.querySelectorAll('[wm-link]').forEach(link => {                    // Retornar uma lista de tags com cada um dos exercicios.
+            const conteudo = document.getElementById('conteudo')
+            
+            link.onclick = function (event) {                               // Função que será chamada quando o usuário clicar.
+                event.preventDefault()                                      // Previne que o link navegue para outra pagina. Faz uma chamada AJAX, 
+                                                                            // pegue o conteúdo da página e jogue pra dentro da sessão relativa do conteúdo.                                                                
+            //Requisição AJAX em cima do link obtido e o resultado dela será colocado dentro do conteudo.
+            fetch(link.getAttribute('wm-link'))
+                .then(resp => resp.text())              // Chamando uma outra função que retornará uma outra promise.
+                .then(html => conteudo.innerHTML = html)        // Pega o HTML recebido e substitui o conteúdo da section (id="conteudo") e altera os conteúdos da pág.
+
+            }
+        })
+    </script>
+</body>
+</html>
