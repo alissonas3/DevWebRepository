@@ -39,9 +39,9 @@ const carro = {                         // CRIAÇÃO LITERAL DE OBJETO.
         }
     ],
 
-    calcularValorSeguro: function () {
-        //...
-    }
+    // calcularValorSeguro: function () {
+    //     //...
+    // }
 
 }
 

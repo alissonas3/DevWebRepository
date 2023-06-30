@@ -1,7 +1,7 @@
 const notas = [6.0, 7.5, 3.3, 8,2, 9.6]
 
     for(let i in notas) {
-        console.log('Eelemento ' + i + ' do array:', notas[i])
+        console.log('Elemento ' + i + ' do array:', notas[i])
     }
 
 console.log()

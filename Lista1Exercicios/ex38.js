@@ -18,3 +18,5 @@ function imprimirImpares(inicio = 0, fim = 100) {
 }
 
 imprimirImpares(19, 3)
+console.log()
+imprimirImpares(8, 30)

@@ -9,4 +9,4 @@ function calculos (valor1, valor2) {
         valor1 / valor2)
 }
 
-calculos(15,30)
+calculos(10,20)

@@ -2,9 +2,9 @@
 
 function printHelloWorld () {
 
-    let i = 0
+    let i = 1
     
-    while(i < 11) {
+    while (i <= 11) {
         console.log('Hello Woooooorld!');
         i++
     }

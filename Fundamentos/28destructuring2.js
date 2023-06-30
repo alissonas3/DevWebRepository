@@ -1,4 +1,4 @@
-const [a] = [10]        //CRIANÇAO DE UMA VARIÁVEL QUE O PRIMEIRO ELEMENTO DO ARRAY É 10.
+const [a] = [10]        //CRIAÇAO DE UMA VARIÁVEL QUE O PRIMEIRO ELEMENTO DO ARRAY É 10.
 console.log(a)
 
 const [n1, , n3, , n5, n6 = 0] = [10, 7, 9, 8]

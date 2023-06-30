@@ -6,7 +6,6 @@ novo salário. Use a estrutura switch e faça um caso default que indique que o 
 function valorReajuste (planoDeTrabalho, salarioAtual) {
 
     switch (planoDeTrabalho) {
-
         case "A":
             return salarioAtual * 1.1
         case "B":

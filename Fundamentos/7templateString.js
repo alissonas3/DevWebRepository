@@ -1,9 +1,10 @@
 const nome = 'Rebeca'
 const concatenacao = 'Ola ' + nome + '!'
 const template = `                  
-    Ola
+    Olaaa
     ${nome}!`                               //TEMPLETE ACEITA DECLARAÇÃO/CONCATENAÇÃO EM MAIS DE UMA LINHA.
-console.log(concatenacao, template)
+console.log(concatenacao)
+console.log(template)
 
 
 // EXPRESSOES:
@@ -13,4 +14,5 @@ const up = texto => texto.toUpperCase()     /*FUNÇÃO up PRA PEGAR AS LETRAS E 
 em maiúsculo */
 
 console.log(`Ei... ${up('Cuidado')}!`)
+console.log(`Heey... ${up('Watch Out!')}`)
 

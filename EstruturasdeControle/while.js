@@ -5,9 +5,11 @@ function getInteiroAleatorioEntre (min, max) {
 
 let opcao = 0
 
-    while( opcao != -1) {
+    while( opcao != -1 ) {
+        
         opcao = getInteiroAleatorioEntre(-1, 10)
         console.log(` A opcção escolhida foi: ${opcao}. `)
+
     }
 
     console.log('Até a próxima!')

@@ -6,6 +6,7 @@ que os resultados sejam iguais. Caso o delta seja negativo, retorne, ao invés d
 “Delta é negativo”.*/
 
 function bhaskara (ax2, bx, c) {
+
     let resultado = []
     let delta = (bx ** 2) - (4 * ax2 * c)
 
@@ -18,9 +19,11 @@ function bhaskara (ax2, bx, c) {
 
     resultado.push(x1)
     resultado.push(x2)
+    
     return resultado
 }
 
 console.log(bhaskara(1, 3, 2))
+console.log(bhaskara(3, -5, 12))
 console.log(bhaskara(3, 1, 2))
 console.log(bhaskara(8, 5, 12))

@@ -4,11 +4,11 @@ function trataErroLancar(erro) {
         msg: erro.msg,
         date: new Date
 
-    //OS ERROS PODEM RETORNAR STRINGS, BOOLEANOS, NUMBER ETC.
-    //throw new Error ('...')
-    //throw 10
-    //throw true
-    //throw 'mensagem'
+        //OS ERROS PODEM RETORNAR STRINGS, BOOLEANOS, NUMBER ETC.
+        //throw new Error ('...')
+        //throw 10
+        //throw true
+        //throw 'mensagem'
     } 
 }
 
@@ -22,4 +22,5 @@ function imprimirNomeGritado(obj) {
 }
 
 const obj = { nome: 'Alisson'}
+//const obj = { name: 'Alisson'}
 imprimirNomeGritado(obj)

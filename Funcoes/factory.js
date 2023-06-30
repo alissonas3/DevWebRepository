@@ -2,10 +2,10 @@
 
 // FACTORY SIMPLES
 
-function criarPessoa () {
+function criarPessoa() {
     return {
-    nome: 'Joao',
-    sobrenome: 'Silva Santos'
+        nome: 'Joao',
+        sobrenome: 'Silva Santos'
     }
 }
 

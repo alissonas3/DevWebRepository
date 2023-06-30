@@ -8,7 +8,7 @@ function aplicacaoSimples (capitalInicial, taxaJuros, tempoAplicacao) {
 
 }
 
-console.log('Calculo de Juros Simples: ', + aplicacaoSimples(100, 10/100, 2));
+console.log('Calculo de Juros Simples: ', + aplicacaoSimples(4000, 4/100, 10));
 
 
 
@@ -19,4 +19,4 @@ function aplicacaoComposta (capitalInicial, taxaJuros, tempoAplicacao) {
 
 }
 
-console.log('Calculo de JurosCompostos: ', + aplicacaoComposta(100, 10/100, 2))
+console.log('Calculo de JurosCompostos: ', + aplicacaoComposta(4000, 4/100, 10))

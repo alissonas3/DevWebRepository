@@ -1,0 +1,74 @@
+ * DESENVOLVIMENTO WEB - JAVASCRIPT * 
+
+Sentença de Codigo
+Exemplo:
+Console.log("Bom dia!")
+Console.log('Bom dia!') - Javascript permite ambos exemplos.
+
+
+Definição de bloco em JS
+Exemplo:
+Define um bloco com par de { } com ele você consegue agrupar as setenças de código.
+Um programa de computador é organizado em pastas/arquivos/setenças de codigo/blocos de código.
+Teclas de atalho:
+- Para comentar várias linhas de uma vez, Selecione e CTRL + /
+- Para colocar varias linhas de código para frente, Selecione e TAB e para colocar para trás Shift + TAB
+- Para duplicar uma linha de código abaixo, Alt + Shift + Down
+- Para excluir uma linha de código, CTRL + X
+
+
+Number
+String
+Boolean
+
+
+
+* GERAL DE ESTRUTURA DE DADOS * 
+
+Organizar e administrar os dados.
+Exemplo: 
+- Lista de alunos aprovados, existindo uma sequencia.
+- Fila, tendo uma ordem... FIFO - Primeriro que chega é o primeiro que sai.
+- Pilha, sendo o ultimo a chegar, é o primeiro que sai...  LIFO - Ex, pilha de livros.
+- Árvore, utilizando o exemplo de pastas, ex: Musicas, dentro de músicas temos subpastas, ex: rap, rock, cantores e bandas...
+
+
+
+* FUNDAMENTOS DA LINGUAGEM JAVA SCRIPT *
+
+JavaScript é uma linguagem de tipagem fraca. Ex: As variáveis podem variar entre String, Number, Boolean, Function com tipagem dinâmica.
+
+Objeto em JS: par de chaves {} representa um objeto. em JS você pode definir um objeto e suas funções dinamicamente.
+Um objeto em JS é uma coleção de chave (identificador) e valor.
+ 
+JSON = JAVA SCRIPT OBJECT NOTATION = Formato textual. Comunicação entre sistemas, trocando dados.
+
+NULL E UNDEFINED: Passa por Atribuição por valor e atribuição por referência.
+
+Atribuição por referência: Quando você passa o endereço de memória onde aquele objeto está armazenado, e a partir das duas referências (variáveis) você consegue acessar esse objeto. EX: const A e B(tem o endereço onde esse
+objeto está localizado, possui o endereço apontando para o objeto) portanto const A e B apontam para um mesmo endereço na memória.
+para o mesmo endereço na memória.
+
+Atribuição por valor: Quando você trabalha com tipos primitivos (basico), você faz uma cópia por valor. Cada variavel tem seu valor, você passa o valor de uma para outra mas ambas não se alteram. Os valores são
+independentes.
+
+Função vs Objeto: A forma de criar objeto em JS é a partir de função.
+
+Notação Ponto: Acessar membros de uma função / Membros de um objeto a partir de uma notação ponto.
+
+OPERADOR UNÁRIO: Apenas um único operando.
+OPERADOR BINÁRIO: Dois operandos.
+OPERADOR TERNÁRIO: Três operandos. Símbolo " ? ". É composto por 3 partes. 
+1) Expressão que retorna verdadeiro ou falso;
+2) ? VERDADEIRO.
+3) ? FALSO.
+
+-----
+
+OBS: Se você estiver executando JAVASCRIPT no FRONT END, você estará executando JS dentro do BROWSER (navegador). Se for no BACK END, será executado o JS pelo NODE.
+
+
+
+* PROGRAMAÇÃO ORIENTADA A OBJETOS EM JAVA SCRIPT *
+
+

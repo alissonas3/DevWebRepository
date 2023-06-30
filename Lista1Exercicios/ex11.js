@@ -7,9 +7,9 @@ Partindo daí elabore uma função que recebe um ano e calcula se ele é ano bis
 mensagem e retornando true ou false.*/
 
 
-function bissexto (ano) {
+function bissexto(ano) {
 
-    if (ano <= 0) {                                                                         
+    if (ano <= 0) {
         return false
     } else
         if (ano % 400 == 0) {

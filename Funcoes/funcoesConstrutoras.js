@@ -23,10 +23,13 @@ function Carro(velocidadeMax = 250, delta = 5) {
 //INSTANCIACAO DE OBJETOS E SUAS CHAMADAS DO ACELERAR RETORNANDO SUA VELOCIDADE ATUAL.
 
 const Uno = new Carro
+Uno.acelerar()
 Uno.acelerar()      // CADA CHAMADA AUMENTARA A VELOCIDADE EM 5.
+Uno.acelerar()
 console.log(Uno.getVelocidadeAtual())
 
 const Ferrari = new Carro(350, 65)
+Ferrari.acelerar()
 Ferrari.acelerar()       // CADA CHAMADA AUMENTARA A VELOCIDADE EM 65 COM VELOCIDADE MAX 350.
 Ferrari.acelerar()
 Ferrari.acelerar()

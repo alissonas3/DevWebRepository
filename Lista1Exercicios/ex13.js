@@ -24,6 +24,7 @@ function diaDaSemana(numero) {
 console.log(diaDaSemana(2))
 console.log(diaDaSemana(5))
 console.log(diaDaSemana(6))
+console.log(diaDaSemana(7))
 console.log(diaDaSemana(3))
 console.log(diaDaSemana(1))
 console.log(diaDaSemana(10))
