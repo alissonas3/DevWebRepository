@@ -5,8 +5,10 @@
     <title>Tamanho Box</title>
     <style>
 
+        /* Como a proriedade box-sizing não é transmitida por herança, podemos criar um seletor universal para todos elementos receberem essa propriedade considerando
+        a borda e o padding por padrão. */
         * {
-            box-sizing: border-box;
+            box-sizing: border-box; /* Considera todoas as unidades da borda para dentro, padding. */
         }
 
         body {
@@ -20,6 +22,8 @@
             height: 300px;
             padding: 100px;
             border: solid 20px;
+            /* box-sizing: content-box; 600px é apenas o conteudo, mais 200 de padding mais 40 da borda
+            box-sizing: border-box; Considera todoas as unidades da borda para dentro, padding. */
         }
     </style>
 </head>
