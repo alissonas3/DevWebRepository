@@ -44,21 +44,21 @@
             border: solid 1px #778;
             border-radius: 5px;
         }
-        
+
         .menu {
-           display: inline-block;
-           vertical-align: top;
-           height: 80px;
-           padding: 25px;
+            display: inline-block;
+            vertical-align: top;
+            height: 80px;
+            padding: 25px;
         }
 
-         ul {
+        ul {
             list-style-type: none;
             margin: 0;
             padding: 0;
         }
 
-        
+
         .menu li {
             display: inline-block;
             float: left;
@@ -77,14 +77,14 @@
             border-radius: 5px;
             color: black;
         }
-        
+
         .autenticacao {
             float: right;
             padding: 25px;
             height: 80px;
-            
+
         }
-        
+
         .autenticacao a {
             color: white;
             font-size: 1.3em;
@@ -106,7 +106,7 @@
             .menu-toggle {
                 display: none;
             }
-        } 
+        }
 
         @media (max-width: 720px) {
             .menu {
@@ -150,7 +150,7 @@
                 </li>
             </ul>
         </nav>
-        
+
         <aside class="autenticacao">
             <a href="#login">Login</a>
             <a href="#registar" class="botao destaque">Registrar</a>
@@ -158,22 +158,22 @@
     </header>
 
     <script>
-        window.onhashchange = function(eventChanged) {
+        window.onhashchange = function (eventChanged) {
 
-            const url = eventChanged.url.split('#')[1]
-            const newUrl = eventChanged.newUrl.split('#')[1]
-            console.log(url, newUrl)
+            const url = eventChanged.oldURL.split("#")[1];
+            const newUrl = eventChanged.newURL.split("#")[1];
+            console.log(url, newUrl);
 
-            const oldLink = document.querySelector(`.menu a[href='#${url}']`)
-            const newLink = document.querySelector(`.menu a[href='#${newUrl}']`)
+            const oldLink = document.querySelector(`.menu a[href='#${url}']`);
+            const newLink = document.querySelector(`.menu a[href='#${newUrl}']`);
 
             /*Retirar a marcação selected da URL anterior*/
-            oldLink && oldLink.classList.remove('selected')
+            oldLink && oldLink.classList.remove("selected");
 
             /*Adicionar a marcação selected na nova URL clicada*/
-            newLink && newLink.classList.add('selected')
+            newLink && newLink.classList.add("selected");
+        };
 
-        }
     </script>
 </body>
 
