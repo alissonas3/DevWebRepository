@@ -51,11 +51,28 @@
             background: #f50a31;
             color: #fff;
         }
-
+        
+        /* FlexBox */
+        
         .cabecalho {
-            justify-content: flex-end;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
-    </style>
+
+        .menu {
+            flex-grow: 10;
+        }
+
+        .menu ul {
+           display: flex;
+           /* justify-content: start; */
+        }
+        
+        .menu li {
+            margin: 0px 10px
+        }
+        </style>
 </head>
 
 <body>
