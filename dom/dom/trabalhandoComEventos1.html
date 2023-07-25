@@ -9,9 +9,30 @@
 
 <body class="conteudo exercicio">
     <div>
-        <a href="https://google.com.br">Google</a>
+        <a eventProp href="https://google.com.br">Google</a>  
+        <!-- Evento, opcao 1: onclick="openIn5Seg(event)" -->
     </div>
+    
     <script>
-        // ...
+        function openIn5Seg(event) {
+            event.preventDefault()
+
+                console.log('Loading in 5 seconds...')
+
+            setTimeout(() => {
+                const link = event.target
+                window.location.href = link.href
+            }, 5000)
+        }
+
+        // Evento, opcao 2:
+        // const e = document.querySelector('e')
+        // e.onclick = openIn5Seg
+
+        // Evento, melhor opcao:
+        const e = document.querySelector('[eventProp]')
+        e.onclick = openIn5Seg
     </script>
 </body>
+
+++

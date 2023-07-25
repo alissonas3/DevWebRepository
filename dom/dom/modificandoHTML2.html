@@ -12,7 +12,17 @@
         <p>Texto Inicial</p>
     </div>
     <script>
-        // ...
+        const div = document.querySelector('div')
+        div.innerHTML = 'Watch out: Text Modified'
+        // div.outerHTML = 'Modified text2'
+        div.insertAdjacentHTML('beforebegin', '<p>Before Begin the Text</p>')
+        div.insertAdjacentHTML('afterbegin', '<p>After Begin</p>')
+        div.insertAdjacentHTML('beforeend', '<p>Before End</p>')
+        div.insertAdjacentHTML('afterend', '<p>After end the Text</p>')
+
+        // Somente o texto (sem tags)
+        // console.log(div.innerHTML)
+        console.log(div.innerText)
     </script>
 </body>
 
