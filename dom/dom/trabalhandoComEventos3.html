@@ -37,15 +37,35 @@
 </head>
 
 <body>
-    <div class="esquerda" wm-dropzone>
+    <div class="esquerda" dropzone>
         <div class="item">1</div>
         <div class="item">2</div>
         <div class="item">3</div>
         <div class="item">4</div>
     </div>
-    <div class="direita" wm-dropzone></div>
+    <div class="direita" dropzone></div>
     <script>
-        // ...
+        const items = document.querySelectorAll('[dropzone] .item')
+
+        items.forEach((item, index) => {
+            item.draggable = true       // O elemento passa a ser draggable
+            item.id = item.id || `draggable-item-${index}`      // Atribuir um ID para o elemento a ser arrastado
+            item.ondragstart = event =>     // Ao iniciar o arrasto
+                event.dataTransfer.setData('item-id', event.target.id)      // Atribuir ao dataTransfer o ID do elemento arrastado
+        })
+
+        const dropzones = document.querySelectorAll('[dropzone]')
+        dropzones.forEach(dropzone => {             
+            dropzone.ondragover = event => event.preventDefault()           // ondragover é chamado quando o elemento para de ser arrastado. Para realizar a chamada do novo evento, é necessário o preventDefault
+            dropzone.ondrop = function(event) {         // Ao soltar o elemento arrastado
+                const id = event.dataTransfer.getData('item-id')        // Pegar o ID do elemento
+                const item = document.getElementById(id)                // Verifica o ID do elemento que está sendo movido
+                // event.target.appendChild(item)
+                dropzone.appendChild(item)          // Adiciona esse elemento em outro local
+            }
+        })
+
+
     </script>
 </body>
 
