@@ -22,6 +22,8 @@ function Barreira(reverse = false) {
 // test.setAltura(300)
 // document.querySelector('[flappy]').appendChild(test.elemento)
 
+
+
 function BarreiraDupla(altura, aberturaEntreBarreiras, posicaoX) {
     this.elemento = newElement('div', 'barreira-dupla')
 
@@ -49,5 +51,85 @@ function BarreiraDupla(altura, aberturaEntreBarreiras, posicaoX) {
     this.setX(posicaoX)
 }
 
-const test = new BarreiraDupla(700, 200, 800)
-document.querySelector('[flappy]').appendChild(test.elemento)
+// const test = new BarreiraDupla(700, 200, 800)
+// document.querySelector('[flappy]').appendChild(test.elemento)
+
+
+
+
+function Barreiras(altura, largura, aberturaEntreBarreiras, espacoEntreBarreiras, notificarPontuacao) {
+    this.pares = [
+        new BarreiraDupla(altura, aberturaEntreBarreiras, largura),
+        new BarreiraDupla(altura, aberturaEntreBarreiras, largura + espacoEntreBarreiras),
+        new BarreiraDupla(altura, aberturaEntreBarreiras, largura + espacoEntreBarreiras * 2),
+        new BarreiraDupla(altura, aberturaEntreBarreiras, largura + espacoEntreBarreiras * 3)
+    ]
+
+    const deslocamento = 3
+
+    // Funcao para dar animação ao game, passando por cada BarreiraDupla fazendo com que ele se desloque pegando o X atual - o Deslocamento.
+    this.animacao = () => {
+        this.pares.forEach(par => {
+            par.setX(par.getX() - deslocamento)
+
+            // Quando o elemento barreira sair da área do jogo, o X (barreira) é setado e volta lá pro final (há 400px da última barreira),
+            // e a partir disso será sorteado uma nova aberturaEntreBarreiras.
+            if (par.getX() < -par.getLargura()) {
+                par.setX(par.getX() + espacoEntreBarreiras * this.pares.length)
+                par.aberturaAleatoria()
+            }
+
+            const meio = largura / 2
+
+            // Se o X do par + Deslocamento (parametro) for maior ou igual ao Meio e a posicao X sem o Deslocamento for menor que o Meio, significa que ultrapassouMeioTela.
+            const ultrapassouMeioTela = par.getX() + deslocamento >= meio && par.getX() < meio
+
+            if (ultrapassouMeioTela) notificarPontuacao()
+
+        })
+    }
+}
+
+
+
+function Bird(alturaJogo) {
+    let voar = false
+
+    this.elemento = newElement('img', 'passaro')
+    this.elemento.src = 'imgs/passaro.png'
+
+    this.getY = () => parseInt(this.elemento.style.bottom.split('px')[0])
+    this.setY = y => this.elemento.style.bottom = `${y}px`
+
+    window.onkeydown = e => voar = true
+    window.onkeyup = e => voar = false
+
+    this.animacao = () => {
+        const novoY = this.getY() + (voar ? 8 : -5)
+        const alturaMax = alturaJogo - this.elemento.clientHeight
+
+        if(novoY <= 0) {
+            this.setY(0)
+        } else if (novoY >= alturaMax) {
+            this.setY(alturaMax)
+        } else {
+            this.setY(novoY)
+        }
+    }
+
+    this.setY(alturaJogo / 2)
+}
+
+
+const testBarreiras = new Barreiras(700, 1200, 200, 400)
+const testBird = new Bird(700)
+const areaDoJogo = document.querySelector('[flappy]')
+
+areaDoJogo.appendChild(testBird.elemento)
+testBarreiras.pares.forEach(par => areaDoJogo.appendChild(par.elemento))     // Para cada par de barreiras que tenha uma inferior e outra superior, adicionar ela dentro da area do jogo.
+
+setInterval(() => {
+    testBarreiras.animacao()
+    testBird.animacao()
+    }, 20
+)
