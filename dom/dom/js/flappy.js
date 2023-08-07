@@ -85,7 +85,6 @@ function Barreiras(altura, largura, aberturaEntreBarreiras, espacoEntreBarreiras
             const ultrapassouMeioTela = par.getX() + deslocamento >= meio && par.getX() < meio
 
             if (ultrapassouMeioTela) notificarPontuacao()
-
         })
     }
 }
@@ -95,7 +94,7 @@ function Barreiras(altura, largura, aberturaEntreBarreiras, espacoEntreBarreiras
 function Bird(alturaJogo) {
     let voar = false
 
-    this.elemento = newElement('img', 'passaro')
+    this.elemento = newElement('img', 'bird')
     this.elemento.src = 'imgs/passaro.png'
 
     this.getY = () => parseInt(this.elemento.style.bottom.split('px')[0])
@@ -105,15 +104,15 @@ function Bird(alturaJogo) {
     window.onkeyup = e => voar = false
 
     this.animacao = () => {
-        const novoY = this.getY() + (voar ? 8 : -5)
+        const newY = this.getY() + (voar ? 8 : -5)
         const alturaMax = alturaJogo - this.elemento.clientHeight
 
-        if(novoY <= 0) {
+        if (newY <= 0) {
             this.setY(0)
-        } else if (novoY >= alturaMax) {
+        } else if (newY >= alturaMax) {
             this.setY(alturaMax)
         } else {
-            this.setY(novoY)
+            this.setY(newY)
         }
     }
 
@@ -121,15 +120,91 @@ function Bird(alturaJogo) {
 }
 
 
-const testBarreiras = new Barreiras(700, 1200, 200, 400)
-const testBird = new Bird(700)
-const areaDoJogo = document.querySelector('[flappy]')
 
-areaDoJogo.appendChild(testBird.elemento)
-testBarreiras.pares.forEach(par => areaDoJogo.appendChild(par.elemento))     // Para cada par de barreiras que tenha uma inferior e outra superior, adicionar ela dentro da area do jogo.
+function Progresso() {
+    this.elemento = newElement('span', 'progresso')
+    this.notificarPontuacao = pontos => {
+        this.elemento.innerHTML = pontos
+    }
+    this.notificarPontuacao(0)
+}
 
-setInterval(() => {
-    testBarreiras.animacao()
-    testBird.animacao()
-    }, 20
-)
+
+
+function ElementosSobrepostos(elemA, elemB) {
+
+    const a = elemA.getBoundingClientRect()         // Retangulo associado ao elemento A.
+    const b = elemB.getBoundingClientRect()
+
+    const horizontal = a.left + a.width >= b.left &&
+        b.left + b.width >= a.left
+
+    const vertical = a.top + a.height >= b.top &&
+       b.top + b.height >= a.top
+
+    return horizontal && vertical
+}
+
+
+
+function colisao(passaro, barreiras) {
+    let colisao = false
+
+    barreiras.pares.forEach(barreiraDupla => {
+        if(!colisao) {
+            const superior = barreiraDupla.superior.elemento
+            const inferior = barreiraDupla.inferior.elemento
+            colisao = ElementosSobrepostos(passaro.elemento, superior) || ElementosSobrepostos(passaro.elemento, inferior)
+        }
+    })
+
+    return colisao
+}
+
+
+
+function FlappyBird() {
+    let pontos = 0
+
+    const areaDoJogo = document.querySelector('[flappy]')
+    const altura = areaDoJogo.clientHeight
+    const largura = areaDoJogo.clientWidth
+
+    const progresso = new Progresso()
+    const barreiras = new Barreiras(altura, largura, 200, 400, () => progresso.notificarPontuacao(++pontos))
+    const passaro = new Bird(altura)
+
+    areaDoJogo.appendChild(progresso.elemento)
+    areaDoJogo.appendChild(passaro.elemento)
+    barreiras.pares.forEach(par => areaDoJogo.appendChild(par.elemento))
+
+    this.start = () => {
+        //Loop do jogo
+        const temporizador = setInterval(() => {
+            barreiras.animacao()
+            passaro.animacao()
+
+            if (colisao(passaro, barreiras)) {
+                clearInterval(temporizador)
+            }
+        }, 20);
+    }
+}
+
+new FlappyBird().start()
+
+
+
+// const testBarreiras = new Barreiras(700, 1200, 200, 400)
+// const testBird = new Bird(700)
+// const areaDoJogo = document.querySelector('[flappy]')
+
+// areaDoJogo.appendChild(testBird.elemento)
+// areaDoJogo.append(new Progresso().elemento)
+// testBarreiras.pares.forEach(par => areaDoJogo.appendChild(par.elemento))     // Para cada par de barreiras que tenha uma inferior e outra superior, adicionar ela dentro da area do jogo.
+
+// setInterval(() => {
+//     testBarreiras.animacao()
+//     testBird.animacao()
+//     }, 20
+// )
