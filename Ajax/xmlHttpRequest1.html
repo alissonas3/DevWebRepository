@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>XMLHttpRequest #01</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class="conteudo exercicio">
+    <h1>Estados</h1>
+
+    <script>
+        
+        function ajax(config) {
+
+            const xhr = new XMLHttpRequest()
+            xhr.open(config.method, config.url, true)
+
+            xhr.onload = e => {
+                if (xhr.status === 200) {
+                    config.success(xhr.response)
+
+                } else if (xhr.status >= 400) {
+                    config.error({
+                        code: xhr.status,
+                        text: xhr.statusText
+                    })
+                }
+            }
+
+            xhr.send()
+        }
+
+
+
+        function createTable(estados) {
+
+            // Função que vai transformar um array em outro array, e retornando
+            // em um array de objetos do tipo estado.
+
+            const lines = estados.map(estado => {
+                const tableId = document.createElement('td')
+                tableId.innerHTML = estado.id
+
+                const tableName = document.createElement('td')
+                tableName.innerHTML = estado.nome
+
+                const tableInitials = document.createElement('td')
+                tableInitials.innerHTML = estado.sigla
+
+                // Linha
+                const tr = document.createElement('tr')
+
+                tr.appendChild(tableId)
+                tr.appendChild(tableName)
+                tr.appendChild(tableInitials)
+
+                return tr
+
+            })
+
+            
+
+            const table = document.createElement('table')
+            lines.forEach(line => table.appendChild(line))      // Adiciona os elementos na linha da tabela.
+            document.body.appendChild(table)                    // Adiciona a tabela no body.
+        }
+
+
+
+        ajax({
+            url: "dados/estados.json",
+            method: "get",
+            success(response) {
+                const estados = JSON.parse(response)
+                createTable(estados)
+            },
+
+            error(e) {
+                const msg = document.createTextNode(`${e.code}: ${e.text}`)
+                document.body.appendChild(msg)
+            }
+        })
+
+    </script>
+</body>
