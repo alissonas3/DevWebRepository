@@ -13,6 +13,46 @@
     <script>
         function Ajax(config) {
 
+            const xhr = new XMLHttpRequest()
+            xhr.open(config.method, config.url, true)
+
+            xhr.onreadystatechange = e => {
+                
+                if (xhr.readyState === 4) {
+
+                    if (xhr.status === 200) {
+                        config.success(xhr.responseXML)
+                        
+                    } else if (xhr.status >= 400) {
+                        config.error({
+                            code: xhr.status,
+                            text: xhr.statusText
+                        })
+                    }
+                }
+            }
+
+            xhr.send()
         }
+
+
+        Ajax({
+            url: "dados/estados.xml",
+            method: "get",
+            success (response) {
+                console.log(response)
+                const estados = response.getElementsByTagName('estado')
+                const items = Array.from(estados).reduce(
+                    (html, estado) => html + `<li>${estado.attributes.nome.value}</li>`, ''
+                )
+                // Adicionar dentro de uma UL antes de encerrar o body.
+                document.body.insertAdjacentHTML('beforeend', `<ul>${items}</ul>`)
+            },
+
+            error (e) {
+                const msg = document.createTextNode(`${e.code}: ${e.text}`)
+                document.body.appendChild(msg)
+            }
+,        })
     </script>
 </body>
