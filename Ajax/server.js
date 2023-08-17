@@ -35,8 +35,8 @@ app.post('/upload', (req, res) => {
 
 app.post('/formulario', (req, resp) => {
     resp.send({
-        ...resp.body,
-        id: 1
+        ...req.body,
+        id: 8
     })
 })
 

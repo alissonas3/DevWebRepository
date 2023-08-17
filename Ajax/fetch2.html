@@ -45,15 +45,27 @@
                 body: new URLSearchParams(data)
             }
 
-            fetch(form.action, options)
-                .then(resp => resp.json())
-                .then(json => {
-                    const resultado = document.getElementById('resultado')
-                    resultado.innerHTML = JSON.stringify(json)
-                })
-                .catch(e => {
-                    resultado.innerHTML = e
-                })
+            const resultado = document.getElementById('resultado')
+
+
+            // Usando Fetch com Promise para tratamento de erro.
+            // fetch(form.action, options)
+            //     .then(resp => resp.json())
+            //     .then(json => {
+            //         resultado.innerHTML = JSON.stringify(json)
+            //     })
+            //     .catch(e => {
+            //         resultado.innerHTML = e
+            //     })
+
+            // Usando Async Await para tratamento de erro.
+            try {
+                const resp = await fetch(form.action, options)
+                const json = await resp.json()
+                resultado.innerHTML = JSON.stringify(json)
+            } catch {
+                resultado.innerHTML = e
+            }
         }
     </script>
 
